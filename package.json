@@ -11,7 +11,6 @@
     "install:all": "npm install && npm install --prefix server && npm install --prefix client"
   },
   "devDependencies": {
-<<<<<<< HEAD
     "@types/compression": "^1.8.1",
     "@types/express": "^5.0.6",
     "@types/natural": "^5.1.5",
@@ -37,14 +36,5 @@
     "natural": "^8.1.1",
     "socket.io": "^4.8.3",
     "socket.io-client": "^4.8.3"
-=======
-    "@types/express": "^5.0.6",
-    "@types/node": "^25.3.3",
-    "@types/serve-static": "^2.2.0",
-    "concurrently": "^8.2.2"
-  },
-  "dependencies": {
-    "express": "^5.2.1"
->>>>>>> 5b1e6e9902b12a80f40bf62306d53ba1ae6ecd2b
   }
 }

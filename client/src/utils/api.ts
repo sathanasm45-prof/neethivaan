@@ -1,8 +1,33 @@
-// path: client/src/utils/api.ts
-// Centralised API base URL from Vite env var.
+// client/src/utils/api.ts
 
-export const API_BASE = (import.meta.env.VITE_API_URL || 'http://localhost:5000') + '/api';
+import axios from "axios";
 
-// Re-export axios instance for convenience
-import axios from 'axios';
-export default axios;
+export const API_BASE =
+  (import.meta.env.VITE_API_URL || "http://localhost:5000") + "/api";
+
+const api = axios.create({
+  baseURL: API_BASE,
+  headers: {
+    "Content-Type": "application/json",
+  },
+});
+
+api.interceptors.request.use((config) => {
+  const token = localStorage.getItem("token");
+
+  if (token) {
+    config.headers.Authorization = `Bearer ${token}`;
+  }
+
+  return config;
+});
+
+api.interceptors.response.use(
+  (response) => response,
+  (error) => {
+    console.error("API Error:", error.response?.data || error.message);
+    return Promise.reject(error);
+  }
+);
+
+export default api;

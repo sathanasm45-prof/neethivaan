@@ -2,49 +2,16 @@
   "name": "neethivaan",
   "version": "1.0.0",
   "private": true,
-  "description": "Root workspace — runs both client and server concurrently",
-  "scripts": {
-    "dev": "concurrently \"npm run dev --prefix server\" \"npm run dev --prefix client\"",
-    "build": "npm run build --prefix server && npm run build --prefix client",
-    "start": "npm run start --prefix server",
-    "seed": "npm run seed --prefix server",
-    "install:all": "npm install && npm install --prefix server && npm install --prefix client"
-  },
-  "devDependencies": {
-<<<<<<< HEAD
-    "@types/compression": "^1.8.1",
-    "@types/express": "^5.0.6",
-    "@types/natural": "^5.1.5",
-    "@types/node": "^25.3.5",
-    "@types/serve-static": "^2.2.0",
-    "concurrently": "^8.2.2",
-    "nodemon": "^3.1.14",
-    "ts-node": "^10.9.2",
-    "ts-node-dev": "^2.0.0",
-    "typescript": "^5.9.3",
-    "vite-plugin-pwa": "^1.2.0",
-    "workbox-window": "^7.4.0"
-  },
   "dependencies": {
-    "axios": "^1.13.6",
-    "compression": "^1.8.1",
+    "compromise": "^14.15.0",
     "cors": "^2.8.6",
     "dotenv": "^17.3.1",
     "express": "^5.2.1",
-    "express-mongo-sanitize": "^2.2.0",
-    "jsonwebtoken": "^9.0.3",
     "mongoose": "^9.2.4",
+    "multer": "^2.1.1",
     "natural": "^8.1.1",
-    "socket.io": "^4.8.3",
-    "socket.io-client": "^4.8.3"
-=======
-    "@types/express": "^5.0.6",
-    "@types/node": "^25.3.3",
-    "@types/serve-static": "^2.2.0",
-    "concurrently": "^8.2.2"
-  },
-  "dependencies": {
-    "express": "^5.2.1"
->>>>>>> 5b1e6e9902b12a80f40bf62306d53ba1ae6ecd2b
+    "node-cron": "^4.2.1",
+    "openai": "^6.27.0",
+    "pdf-parse": "^2.4.5"
   }
 }

@@ -1,79 +1,37 @@
-/*
-import React, { Suspense, lazy } from "react";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import PageLoader from "./components/PageLoader"; // a simple full-screen spinner
+import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 
-// ── Lazy-loaded pages (each becomes its own JS chunk) ────────────
-const Login            = lazy(() => import("./pages/Login"));
-const Register         = lazy(() => import("./pages/Register"));
-const Dashboard        = lazy(() => import("./pages/Dashboard"));
-const SubmitComplaint  = lazy(() => import("./pages/SubmitComplaint"));
-const MyComplaints     = lazy(() => import("./pages/MyComplaints"));
-const ComplaintDetail  = lazy(() => import("./pages/ComplaintDetail"));
+function Home() {
+  return <h2>Welcome to Neethivaan AI Legal Assistant</h2>;
+}
 
-// Admin pages
-const AdminDashboard        = lazy(() => import("./pages/admin/AdminDashboard"));
-const AdminComplaints       = lazy(() => import("./pages/admin/AdminComplaints"));
-const AdminComplaintDetail  = lazy(() => import("./pages/admin/AdminComplaintDetail"));
-const AdminUsers            = lazy(() => import("./pages/admin/AdminUsers"));
+function Register() {
+  return <h2>Register Page</h2>;
+}
 
-// ── Auth guard ────────────────────────────────────────────────────
-// Replace with your actual auth hook/store
-import { useAuth } from "./hooks/useAuth";
+function Login() {
+  return <h2>Login Page</h2>;
+}
 
-const PrivateRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const { isAuthenticated } = useAuth();
-  return isAuthenticated ? <>{children}</> : <Navigate to="/login" replace />;
-};
+function App() {
+  return (
+    <Router>
+      <div style={{ textAlign: "center" }}>
+        <h1>Neethivaan</h1>
 
-const AdminRoute: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const { isAuthenticated, user } = useAuth();
-  if (!isAuthenticated) return <Navigate to="/login" replace />;
-  if (user?.role !== "admin") return <Navigate to="/dashboard" replace />;
-  return <>{children}</>;
-};
+        <nav style={{ marginBottom: "20px" }}>
+          <Link to="/">Home</Link> |{" "}
+          <Link to="/login">Login</Link> |{" "}
+          <Link to="/register">Register</Link>
+        </nav>
 
-// ── App component ─────────────────────────────────────────────────
-const App: React.FC = () => (
-  <BrowserRouter>
-    <Suspense fallback={<PageLoader />}>
-      <Routes>
-        {/* Public */}
-        <Route path="/login"    element={<Login />} />
-        <Route path="/register" element={<Register />} />
-
-        {/* Citizen */}
-        <Route path="/" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
-        <Route path="/dashboard" element={<PrivateRoute><Dashboard /></PrivateRoute>} />
-        <Route path="/submit"    element={<PrivateRoute><SubmitComplaint /></PrivateRoute>} />
-        <Route path="/complaints" element={<PrivateRoute><MyComplaints /></PrivateRoute>} />
-        <Route path="/complaints/:id" element={<PrivateRoute><ComplaintDetail /></PrivateRoute>} />
-
-        {/* Admin */}
-        <Route path="/admin"              element={<AdminRoute><AdminDashboard /></AdminRoute>} />
-        <Route path="/admin/complaints"   element={<AdminRoute><AdminComplaints /></AdminRoute>} />
-        <Route path="/admin/complaints/:id" element={<AdminRoute><AdminComplaintDetail /></AdminRoute>} />
-        <Route path="/admin/users"        element={<AdminRoute><AdminUsers /></AdminRoute>} />
-
-        {/* Fallback */}
-        <Route path="*" element={<Navigate to="/" replace />} />
-      </Routes>
-    </Suspense>
-  </BrowserRouter>
-);
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+        </Routes>
+      </div>
+    </Router>
+  );
+}
 
 export default App;
-
-// ── PageLoader component (create at frontend/src/components/PageLoader.tsx) ──
-// import React from "react";
-// const PageLoader: React.FC = () => (
-//   <div style={{ display:"flex", alignItems:"center", justifyContent:"center",
-//                 height:"100dvh", background:"#f5f3ff" }}>
-//     <div style={{ width:40, height:40, border:"4px solid #6366f1",
-//                   borderTopColor:"transparent", borderRadius:"50%",
-//                   animation:"spin 0.7s linear infinite" }} />
-//     <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
-//   </div>
-// );
-// export default PageLoader;
-*/

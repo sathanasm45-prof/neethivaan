@@ -11,10 +11,15 @@ app.use(express.json());
 
 connectDB();
 
-app.use("/api/auth",authRoutes);
-app.use("/api/complaints",complaintRoutes);
-app.use("/api/ai",aiRoutes);
+/* 👇 ADD THIS HERE */
+app.get("/", (req, res) => {
+  res.send("Neethivaan Backend API is running 🚀");
+});
 
-app.listen(5000,()=>{
+app.use("/api/auth", authRoutes);
+app.use("/api/complaints", complaintRoutes);
+app.use("/api/ai", aiRoutes);
+
+app.listen(5000, () => {
   console.log("Server running on port 5000");
 });
